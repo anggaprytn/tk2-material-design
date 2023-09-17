@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anggaprytn.materialdesign"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c8d83790-a491-4487-b3c6-7da0248c9dd4"
+      }
+    },
+    "owner": "anggaprytn"
   }
 }
