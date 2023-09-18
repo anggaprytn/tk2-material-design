@@ -7,6 +7,15 @@ import { Text } from 'react-native-paper';
 
 const Tab = createBottomTabNavigator();
 
+const TabBarIcon = ({ color, name, label }) => (
+  <>
+    <IconFeather name={name} color={color} size={24} />
+    <Text variant="labelSmall" style={{ color }}>
+      {label}
+    </Text>
+  </>
+);
+
 const BottomTabNavigator: React.FC = () => {
   return (
     <Tab.Navigator>
@@ -15,13 +24,9 @@ const BottomTabNavigator: React.FC = () => {
         component={Home}
         options={{
           tabBarShowLabel: false,
+          // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({ color }) => (
-            <>
-              <IconFeather name="home" color={color} size={24} />
-              <Text variant="labelSmall" style={{ color }}>
-                Catalog
-              </Text>
-            </>
+            <TabBarIcon color={color} name="home" label="Catalog" />
           ),
         }}
       />
@@ -30,13 +35,9 @@ const BottomTabNavigator: React.FC = () => {
         component={Profile}
         options={{
           tabBarShowLabel: false,
-          tabBarIcon: ({ color, focused }) => (
-            <>
-              <IconFeather name="user" color={color} size={24} />
-              <Text variant="labelSmall" style={{ color }}>
-                Profile
-              </Text>
-            </>
+          // eslint-disable-next-line react/no-unstable-nested-components
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon color={color} name="user" label="Profile" />
           ),
         }}
       />

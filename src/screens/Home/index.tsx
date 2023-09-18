@@ -1,63 +1,37 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Image } from 'react-native';
-import { Card } from 'react-native-paper';
-import { useSelector } from 'react-redux';
+import { View, Image } from 'react-native';
 import { Pressable } from '@/components';
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { styles } from './styles';
+import React from 'react';
+
+const data = [
+  {
+    id: 1,
+    image: 'https://picsum.photos/700',
+  },
+  {
+    id: 2,
+    image: 'https://picsum.photos/701',
+  },
+  {
+    id: 3,
+    image: 'https://picsum.photos/702',
+  },
+];
 
 const Home = () => {
-  const isSignedIn = useSelector(({ authSlice }: any) => authSlice.isSignedIn);
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
       <View>
-        <Pressable style={styles.card}>
-          <Image
-            source={{ uri: 'https://picsum.photos/700' }}
-            style={{
-              width: wp(100) - 32,
-              height: 175,
-              borderRadius: 10,
-            }}
-          />
-        </Pressable>
-        <Pressable style={styles.card}>
-          <Image
-            source={{ uri: 'https://picsum.photos/701' }}
-            style={{
-              width: wp(100) - 32,
-              height: 175,
-              borderRadius: 10,
-            }}
-          />
-        </Pressable>
-        <Pressable style={styles.card}>
-          <Image
-            source={{ uri: 'https://picsum.photos/702' }}
-            style={{
-              width: wp(100) - 32,
-              height: 175,
-              borderRadius: 10,
-            }}
-          />
-        </Pressable>
+        {data.map(item => (
+          <Pressable key={item.id} style={styles.card}>
+            <Image source={{ uri: item.image }} style={styles.image} />
+          </Pressable>
+        ))}
       </View>
     </View>
   );
 };
 
 export default Home;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  card: {
-    width: wp(100) - 32,
-    height: 175,
-    marginHorizontal: 16,
-    marginVertical: 4,
-    borderRadius: 10,
-  },
-});

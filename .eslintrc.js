@@ -3,10 +3,10 @@ module.exports = {
   extends: [
     '@react-native-community',
     'plugin:react-hooks/recommended',
-    'plugin:jest/recommended',
+    'plugin:prettier/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'react-hooks', 'prettier'],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
@@ -17,7 +17,7 @@ module.exports = {
         'no-undef': 'off',
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
-        'prettier/prettier': ['off', { singleQuote: true }],
+        'prettier/prettier': 'error',
       },
     },
   ],
